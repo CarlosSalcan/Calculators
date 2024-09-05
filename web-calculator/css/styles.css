@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;        /* Centra horizontalmente */
+    align-items: center;            /* Asegura un centrado vertical */
+    height: 100px;
+}
+
+main {
+    display: flex;
+    justify-content: center;        /* Centra horizontalmente */
+    align-items: center;            /* Centra verticalmente */
+    height: calc(100vh - 200px);    /* Resta la altura del header y footer */
+}
+
+footer {
+    display: flex;
+    justify-content: center;        /* Centra horizontalmente */
+    align-items: center; 
+    height: 100px; 
+}
+
+.calculator {
+    width: 500px; 
+    height: 500px;
+    background-color: rgb(175, 117, 30); 
+    border-radius: 20px;
+}
+
+.display{
+    grid-column: span 4;
+    background-color: #222;
+    color: wheat;
+    font-size: 2.5rem;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.display input {
+    background-color: #95a539;
+    border-radius: 7px;
+    text-align: right;
+    padding: 10px;
+    font-size: 2.5rem;
+    width: 95%;
+    height: 60px;
+    border: none;
+}
+
+.buttons {
+    display: grid;
+    padding: 15px;
+    grid-template-columns: repeat(4, 1fr); /* Crear cuadrícula con el mismo espacio */
+    gap: 10px;
+}
+
+.buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20%;
+    font-size: 1.5rem;
+    height: 58px; /* Tamaño estándar de altura */
+    width: 100%; /* Ajusta el ancho para que ocupe el espacio de la cuadrícula */
+}
+
+.btn.double-height {
+    grid-row: span 2;
+    height: 120px;
+}
