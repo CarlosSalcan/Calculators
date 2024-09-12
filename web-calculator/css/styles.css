@@ -43,6 +43,8 @@ footer {
 }
 
 .display input {
+    font-family: 'Press Start 2P', monospace;
+
     background-color: #95a539;
     border-radius: 7px;
     text-align: right;

@@ -5,8 +5,8 @@
 /**
  *  Función que mapea los operadores a sus abreviaturas.
  * 
- * @param {string} operator - El valor del botón clicado.
- * @returns {string} - El valor o la abreviatura correspondiente al operador.
+ *  @param {string} operator - El valor del botón clicado.
+ *  @returns {string} - El valor o la abreviatura correspondiente al operador.
  */
 function mapOperator(operator) {
     const operatorMap = {
@@ -14,7 +14,8 @@ function mapOperator(operator) {
         '-': 'RES',
         'X': 'MUL',
         '/': 'DIV',
-        '√': 'SRQT'
+        '%': 'PCT',
+        '√': 'SQRT'
     };
 
     // Retorna la abreviatura o el valor del botón si no es un operador
