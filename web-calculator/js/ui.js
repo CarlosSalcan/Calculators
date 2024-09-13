@@ -22,7 +22,8 @@ let shouldResetDisplay = false;     // Controla si el display debe resetearse en
  *  Esta función gestiona la entrada de números y operadores en la calculadora. 
  *  - Si el botón clicado es un número, se actualiza el display con el nuevo número. 
  *    Si el display está en estado de reset (cuando se presiona un operador previamente), el número reemplaza el valor actual del display.
- *  - Si el botón clicado es un operador (`+`, `-`, `X`, `/`), se guarda el número actual y el operador, y se muestra la abreviatura del operador en el display.
+ *  - Si el botón clicado es un operador (`+`, `-`, `X`, `/`, `%`), se guarda el número actual y el operador, y se muestra la abreviatura del operador en el display.
+ *  - Si el botón clicado es (`√`), se realizara el calculo utilizando el número ingresado anteriormente y se muestra el resultado en el display.
  *  - Si el botón clicado es el signo igual (`=`), se realiza el cálculo utilizando el número y operador guardados, y se muestra el resultado en el display.
  *  
  *  La función también controla el límite de caracteres en el display y prepara la calculadora para la siguiente entrada.
@@ -30,11 +31,11 @@ let shouldResetDisplay = false;     // Controla si el display debe resetearse en
  *  @example
  *  - Si el display muestra "0" y se hace clic en el botón "5", el display mostrará "5".
  *  - Si el display muestra "5" y se hace clic en el botón "+", el display mostrará "SUM". 
+ *  - Si el display muestra "81" y se hace clic en el botón "√", el display mostrará el resultado (9). 
  *  - Al presionar "=", se realizará el cálculo con los números y operadores guardados.
  *  
  *  @returns {void} - No retorna ningún valor.
- */
-
+*/
 function actualizarDisplay(event) {
     // Obtener valor del btn clicado
     const buttonValue = event.target.textContent;
@@ -66,7 +67,7 @@ function actualizarDisplay(event) {
         }
         currentNumber = resultInput.value;
     
-    } else if (['+', '-', 'X', '/', '%', '√'].includes(buttonValue)) {
+    } else if (['+', '-', 'X', '/', '%'].includes(buttonValue)) {
         previousNumber = currentNumber;               // Guarda el número anterior
         operator = buttonValue;                       // Guarda el operador
         resultInput.value = mapOperator(buttonValue); // Muestra la abreviatura del operador
@@ -80,7 +81,16 @@ function actualizarDisplay(event) {
             previousNumber = '';    // Limpia el número anterior
             operator = '';          // Limpia el operador
         }
+
+    } else if (buttonValue === '√') {
+        // Realiza el cálculo inmediato
+        currentNumber = calculate(currentNumber, 0, '√');
+        resultInput.value = currentNumber;
+        previousNumber = '';
+        operator = '';
+        shouldResetDisplay = true;
     }
+    
 }
 
 /**
@@ -96,6 +106,8 @@ function actualizarDisplay(event) {
  *  - Si el operador es `-`, se realiza una resta.
  *  - Si el operador es `X`, se realiza una multiplicación.
  *  - Si el operador es `/`, se realiza una división. 
+ *  - Si el operador es `√`, se realiza una raiz cuadrada. 
+ *  - Si el operador es `%`, se realiza el calculo de porcentaje. 
  *  
  *  La función devuelve el resultado de la operación matemática.
  *  Si el operador no es válido o se intenta dividir por cero, se maneja el error devolviendo un mensaje adecuado.

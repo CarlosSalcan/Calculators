@@ -68,11 +68,28 @@ footer {
     justify-content: center;
     border-radius: 20%;
     font-size: 1.5rem;
-    height: 58px; /* Tamaño estándar de altura */
-    width: 100%; /* Ajusta el ancho para que ocupe el espacio de la cuadrícula */
+    height: 58px;                   /* Tamaño estándar de altura */
+    width: 100%;                    /* Ajusta el ancho para que ocupe el espacio de la cuadrícula */
 }
 
 .btn.double-height {
     grid-row: span 2;
     height: 120px;
+    font-size: 35px;
+}
+
+.btn.dot {
+    font-size: 50px;
+}
+
+/* Estilos para el hover en los botones */
+button:hover {
+    background-color: #e0e0e0; 
+    transform: scale(1.03);         /* Efecto de zoom leve */
+}
+
+/* Estilos para el botón activo */
+button:active {
+    background-color: #888888; 
+    transform: scale(0.95);         /* Efecto de reducción leve al hacer clic */
 }

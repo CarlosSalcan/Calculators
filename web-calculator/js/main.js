@@ -17,6 +17,16 @@ function initCalculator() {
 
     // Asignar evento al botón de "AC"
     clearButton.addEventListener('click', resetDisplay);
+
+    // Actualizar el año en el pie de página
+    setAnio('year');
+}
+
+//-------------------------------> ACTUALIZAR ANIO
+function setAnio(label) {
+    var today = new Date();
+    var year = today.getFullYear();
+    document.getElementById(label).innerHTML = year;
 }
 
 //-------------------------------> EJECUTAR
