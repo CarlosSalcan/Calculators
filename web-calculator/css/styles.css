@@ -1,19 +1,28 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    background-image: linear-gradient(to right, #ece9e6, #eec7c7); 
 }
 
 header {
     display: flex;
     justify-content: center;        /* Centra horizontalmente */
     align-items: center;            /* Asegura un centrado vertical */
-    height: 100px;
+    height: 50px;
+    padding: 20px;
+    border-radius: 0 0 20px 20px; 
 }
 
 main {
     display: flex;
+    margin: 10px;
+    padding: 17px;
     justify-content: center;        /* Centra horizontalmente */
-    align-items: center;            /* Centra verticalmente */
+    align-items: center;            /* Centra verticalmente */ 
+    flex-shrink: 0;                 /* Evitar que el main se reduzca por debajo de su contenido */
     height: calc(100vh - 200px);    /* Resta la altura del header y footer */
 }
 
@@ -22,7 +31,15 @@ footer {
     justify-content: center;        /* Centra horizontalmente */
     align-items: center; 
     height: 100px; 
+    margin-top: auto;
+    border-radius: 20px 20px 0 0; 
 }
+
+header, footer {
+    background-color: #444; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+}
+
 
 .calculator {
     width: 500px; 
@@ -82,14 +99,81 @@ footer {
     font-size: 50px;
 }
 
-/* Estilos para el hover en los botones */
+/*-------------------------------> EFECTOS DE BOTON */
 button:hover {
     background-color: #e0e0e0; 
     transform: scale(1.03);         /* Efecto de zoom leve */
 }
 
-/* Estilos para el botón activo */
 button:active {
     background-color: #888888; 
     transform: scale(0.95);         /* Efecto de reducción leve al hacer clic */
+}
+
+/*-------------------------------> RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.5rem; /* Ajustar tamaño del texto */
+    }
+
+    .calculator {
+        width: 100%;
+        height: auto;               /* Deja que la altura sea flexible */
+        max-width: 400px;            /* Limitar ancho máximo */
+    }
+
+    .display input {
+        font-size: 2rem;
+        height: 50px;
+    }
+
+    .buttons button {
+        font-size: 1.2rem;
+        height: 50px;
+    }
+
+    .btn.double-height {
+        height: 100px;
+        font-size: 1.5rem;
+    }
+
+    .btn.dot {
+        font-size: 40px;
+    }
+}
+
+/* Estilos para móviles pequeños (pantallas menores a 480px) */
+@media (max-width: 480px) {
+    header, footer {
+        font-size: 1rem; /* Texto más pequeño en móviles */
+    }
+    
+    .calculator {
+        width: 100%;
+        max-width: 320px;            /* Limitar ancho máximo a 320px */
+        padding: 10px;
+    }
+
+    .display input {
+        font-size: 1.5rem;
+        height: 40px;
+    }
+
+    .buttons {
+        gap: 5px;
+    }
+
+    .buttons button {
+        font-size: 1rem;
+        height: 45px;
+    }
+
+    .btn.double-height {
+        height: 90px;
+        font-size: 1.2rem;
+    }
+
+    .btn.dot {
+        font-size: 35px;
+    }
 }
